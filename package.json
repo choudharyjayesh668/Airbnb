@@ -1,0 +1,20 @@
+{
+  "name": "airbnb",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/choudharyjayesh668/Airbnb#readme",
+  "bugs": {
+    "url": "https://github.com/choudharyjayesh668/Airbnb/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/choudharyjayesh668/Airbnb.git"
+  },
+  "license": "ISC",
+  "author": "Jayesh Choudhary",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
