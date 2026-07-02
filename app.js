@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const Chat = require("./models/chat");
+const Listing = require("./models/listing");
 const app = express();
 const PORT = 8080;
 const methodOverride=require("method-override");
@@ -22,6 +22,22 @@ main()
         });
     })
     .catch(err => console.log(err));
+
+//Routes
 app.get("/", (req, res) => {
     res.send("Root is working");
+});
+
+//testing 
+app.get("/testing",async (req,res)=>{
+    let sample=new Listing({
+        title:"TESTING NEW DATA",
+        description:"JUST THA RANDOM DATA",
+        price:100,
+        location:"Banglore",
+        country:"India"
+    });
+    await sample.save();
+    console.log("SAVED TO DB");
+    res.send("SAVED IN DBBB")
 });
