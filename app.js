@@ -34,12 +34,40 @@ app.get("/listing",async (req,res)=>{
     res.render("listings/index.ejs",{allListings});
 });
 
+
+app.get("/listing/new",async (req,res)=>{
+    res.render("listings/new.ejs");
+});
+
+app.post("/listing/new",async (req,res)=>{
+    let{title,description,image,price,location,country}=req.body;
+    console.log(title,description,image,price,location,country);
+    let newlisting=new Listing({
+        title:title,
+        description:description,
+        image:image,
+        price:price,
+        location:location,
+        country:country
+    });
+    try{
+        await newlisting.save();
+        res.redirect("/listing")
+    }catch(error){
+        console.log(error);
+        return res.status(500).send("Data was not saved");
+    }
+});
+
 //Show Route
 app.get("/listing/:id",async (req,res)=>{
     let{id}=req.params;
     const listing = await Listing.findById(id);
     res.render("listings/show.ejs",{listing});
 });
+
+
+
 
 
 //testing 

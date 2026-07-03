@@ -14,7 +14,7 @@
         <li>
             <%= listing.description %>
         </li>
-        <img src="<%= listing.image.url %>"></img>
+        <img src="<%= listing.image %>" alt="Listing Image" width="300">
         <li>
             &#8377; <%= listing.price.toLocaleString("en-IN") %>
         </li>
