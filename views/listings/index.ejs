@@ -9,9 +9,13 @@
     <h1>Hello</h1>
     <ul>
         <% for(let listings of allListings){ %>
-        <ol><%= listings.title %></ol>
+            <li>
+                <a href="/listing/<%= listings._id %>">
+                <%= listings.title %>
+                </a>
+            </li> 
     <% } %>
-        </ul>
+    </ul>
 </body>
 </html>
 

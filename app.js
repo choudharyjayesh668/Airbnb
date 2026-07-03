@@ -27,10 +27,20 @@ main()
 app.get("/", (req, res) => {
     res.send("Root is working");
 });
+
+//Index Route
 app.get("/listing",async (req,res)=>{
     const allListings= await Listing.find({});
     res.render("listings/index.ejs",{allListings});
 });
+
+//Show Route
+app.get("/listing/:id",async (req,res)=>{
+    let{id}=req.params;
+    const listing = await Listing.findById(id);
+    res.render("listings/show.ejs",{listing});
+});
+
 
 //testing 
 // app.get("/testing",async (req,res)=>{
