@@ -27,17 +27,21 @@ main()
 app.get("/", (req, res) => {
     res.send("Root is working");
 });
+app.get("/listing",async (req,res)=>{
+    const allListings= await Listing.find({});
+    res.render("listings/index.ejs",{allListings});
+});
 
 //testing 
-app.get("/testing",async (req,res)=>{
-    let sample=new Listing({
-        title:"TESTING NEW DATA",
-        description:"JUST THA RANDOM DATA",
-        price:100,
-        location:"Banglore",
-        country:"India"
-    });
-    await sample.save();
-    console.log("SAVED TO DB");
-    res.send("SAVED IN DBBB")
-});
+// app.get("/testing",async (req,res)=>{
+//     let sample=new Listing({
+//         title:"TESTING NEW DATA",
+//         description:"JUST THA RANDOM DATA",
+//         price:100,
+//         location:"Banglore",
+//         country:"India"
+//     });
+//     await sample.save();
+//     console.log("SAVED TO DB");
+//     res.send("SAVED IN DBBB")
+// });
