@@ -9,17 +9,14 @@ const listingSchema=new Schema({
         type:String,
         require:true,
     },
-    image:{
-        type:String,
-        default:
-            "https://unsplash.com/photos/warm-light-glowing-behind-silhouetted-leaves-in-darkness-caeHJR-c0Do",
-            set:(value)=>
-                value===""
-            ?
-            "https://unsplash.com/photos/warm-light-glowing-behind-silhouetted-leaves-in-darkness-caeHJR-c0Do"
-            :
-            value,
+    image: {
+    filename: {
+        type: String,
     },
+    url: {
+        type: String,
+    },
+},
     price:{
         type:Number,
         require:true,
