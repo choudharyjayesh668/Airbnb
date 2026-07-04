@@ -3,27 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><%= listing.title %> | Airbnb</title>
+    <link rel="stylesheet" href="/css/show.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Showing SHOW.EJS</h1>
-    <ul>
-        <li>
-            <%= listing.title %>
-        </li>
-        <li>
-            <%= listing.description %>
-        </li>
-        <img src="<%= listing.image %>" alt="Listing Image" width="300">
-        <li>
-            &#8377; <%= listing.price.toLocaleString("en-IN") %>
-        </li>
-        <li>
-            <%= listing.location %>
-        </li>
-        <li>
-            <%= listing.country %>
-        </li>
-    </ul>
+<div class="container">
+    <h1><%= listing.title %></h1>
+    <div class="image-box">
+        <img src="<%= listing.image %>" alt="Listing Image">
+    </div>
+    <div class="details">
+        <div class="detail">
+            <span>Description</span>
+            <p><%= listing.description %></p>
+        </div>
+        <div class="detail">
+            <span>Price</span>
+            <p>₹ <%= listing.price.toLocaleString("en-IN") %> / night</p>
+        </div>
+        <div class="detail">
+            <span>Location</span>
+            <p><%= listing.location %>, <%= listing.country %></p>
+        </div>
+    </div>
+    <div class="buttons">
+        <a href="/listing">← Back to Listings</a>
+    </div>
+</div>
+<div class="buttons">
+        <a href="/listing/<%= listing._id %>/edit">Edit</a>
+    </div>
 </body>
 </html>

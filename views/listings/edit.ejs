@@ -10,51 +10,46 @@
 <body>
 <div class="container">
     <div class="form-box">
-        <h1>Create a New Listing</h1>
-        <form action="/listing/new" method="POST">
+        <h1>Edit your Listing</h1>
+        <form action="/listing/<%=listing._id%>?_method=PUT" method="post">
             <label>Title</label>
             <input
                 type="text"
-                name="title"
-                placeholder="Enter listing title"
+                name="listing[title]"
+                value="<%=listing.title%>"
                 required
             >
             <label>Description</label>
-            <textarea
-                name="description"
-                rows="4"
-                placeholder="Describe your place"
-                required
-            ></textarea>
+            <textarea name="listing[description]"><%= listing.description %></textarea>
             <label>Image URL</label>
             <input
                 type="text"
-                name="image"
-                placeholder="Paste image URL"
+                name="listing[image]"
+                value="<%=listing.image%>"
             >
             <label>Price (₹)</label>
             <input
                 type="number"
-                name="price"
-                placeholder="Enter price"
+                name="listing[price]"
+                value="<%=listing.price%>"
                 required
             >
             <label>Location</label>
             <input
                 type="text"
-                name="location"
-                placeholder="City"
+                name="listing[location]"
+                value="<%=listing.location%>"
                 required
             >
             <label>Country</label>
             <input
                 type="text"
-                name="country"
-                placeholder="Country"
+                name="listing[country]"
+                value="<%=listing.country%>"                
                 required
             >
             <button type="submit">
-                Create Listing
+                Edit
             </button>
         </form>
     </div>

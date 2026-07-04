@@ -34,14 +34,14 @@ app.get("/listing",async (req,res)=>{
     res.render("listings/index.ejs",{allListings});
 });
 
-
+//Create Route
 app.get("/listing/new",async (req,res)=>{
     res.render("listings/new.ejs");
 });
-
+ //Create Route
 app.post("/listing/new",async (req,res)=>{
     let{title,description,image,price,location,country}=req.body;
-    console.log(title,description,image,price,location,country);
+    // console.log(title,description,image,price,location,country);
     let newlisting=new Listing({
         title:title,
         description:description,
@@ -58,6 +58,18 @@ app.post("/listing/new",async (req,res)=>{
         return res.status(500).send("Data was not saved");
     }
 });
+//Edit Route
+app.get("/listing/:id/edit",async (req,res)=>{
+    let{id}=req.params;
+    const listing=await Listing.findById(id);
+    res.render("listings/edit.ejs",{listing});
+});
+//Edit Route
+app.put("/listing/:id",async (req,res)=>{
+    let{id}=req.params;
+    await Listing.findByIdAndUpdate(id ,req.body.listing);
+    res.redirect("/listing")
+});
 
 //Show Route
 app.get("/listing/:id",async (req,res)=>{
@@ -65,6 +77,8 @@ app.get("/listing/:id",async (req,res)=>{
     const listing = await Listing.findById(id);
     res.render("listings/show.ejs",{listing});
 });
+
+
 
 
 
