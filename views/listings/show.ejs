@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= listing.title %> | Airbnb</title>
-    <link rel="stylesheet" href="/css/show.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<% layout("/layouts/boilerplate") -%>
 <body>
+    <link rel="stylesheet" href="/css/new.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <div class="container">
     <h1><%= listing.title %></h1>
     <div class="image-box">
@@ -28,11 +22,11 @@
         </div>
     </div>
     <div class="buttons">
-        <a href="/listing">← Back to Listings</a>
-    </div>
+    <a href="/listing">← Back</a>
+    <a href="/listing/<%= listing._id %>/edit">Edit</a>
+
+    <form action="/listing/<%= listing._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete</button>
+    </form>
 </div>
-<div class="buttons">
-        <a href="/listing/<%= listing._id %>/edit">Edit</a>
-    </div>
 </body>
-</html>

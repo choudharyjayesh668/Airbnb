@@ -2,31 +2,36 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:"Poppins",sans-serif;
 }
 
 body{
+    font-family:"Poppins",sans-serif;
     background:#f7f7f7;
+    color:#222;
+    padding:40px 20px;
 }
 
 .container{
-    width:90%;
-    max-width:900px;
-    margin:40px auto;
+    max-width:850px;
+    margin:auto;
+    background:#fff;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
 h1{
-    color:#222;
-    margin-bottom:20px;
-    font-size:2rem;
+    text-align:center;
+    color:#ff385c;
+    margin-bottom:25px;
 }
 
 .image-box{
     width:100%;
-    height:500px;
+    height:450px;
     overflow:hidden;
-    border-radius:18px;
-    box-shadow:0 6px 20px rgba(0,0,0,.15);
+    border-radius:15px;
+    margin-bottom:30px;
 }
 
 .image-box img{
@@ -36,45 +41,98 @@ h1{
 }
 
 .details{
-    background:#fff;
-    margin-top:30px;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    display:flex;
+    flex-direction:column;
+    gap:20px;
 }
 
 .detail{
-    margin-bottom:25px;
+    padding:18px;
+    background:#fafafa;
+    border-radius:12px;
+    border:1px solid #eee;
 }
 
 .detail span{
     display:block;
-    color:#ff385c;
+    font-size:14px;
+    color:#777;
+    margin-bottom:6px;
     font-weight:600;
-    margin-bottom:8px;
-    font-size:18px;
 }
 
 .detail p{
-    color:#444;
-    line-height:1.6;
-    font-size:16px;
+    font-size:17px;
+    color:#222;
 }
 
 .buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
     margin-top:30px;
 }
 
-.buttons a{
-    display:inline-block;
+.buttons a,
+.buttons button{
     text-decoration:none;
     background:#ff385c;
-    color:white;
-    padding:12px 25px;
+    color:#fff;
+    border:none;
+    padding:12px 24px;
     border-radius:10px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
     transition:.3s;
 }
 
-.buttons a:hover{
-    background:#e31c5f;
+.buttons a:hover,
+.buttons button:hover{
+    background:#e61e4d;
+    transform:translateY(-2px);
+}
+
+form{
+    display:flex;
+    justify-content:center;
+    margin-top:15px;
+}
+
+form button{
+    background:#222;
+    color:white;
+    border:none;
+    padding:12px 24px;
+    border-radius:10px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+form button:hover{
+    background:#000;
+}
+
+@media(max-width:768px){
+
+    .container{
+        padding:20px;
+    }
+
+    .image-box{
+        height:280px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .buttons a,
+    .buttons button,
+    form button{
+        width:100%;
+        text-align:center;
+    }
 }
