@@ -6,53 +6,76 @@
     <title>Create New Listing | Airbnb</title>
     <link rel="stylesheet" href="/css/new.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
 </head>
 <body>
 <div class="container">
     <div class="form-box">
         <h1>Create a New Listing</h1>
-        <form action="/listing/new" method="POST">
+        <form action="/listing/new" method="POST" novalidate class="needs-validation">
             <label>Title</label>
             <input
+            class="form-control"
                 type="text"
                 name="title"
                 placeholder="Enter listing title"
                 required
             >
+
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please choose a Title.</div>
+
             <label>Description</label>
             <textarea
+            class="form-control"
                 name="description"
                 rows="4"
                 placeholder="Describe your place"
                 required
             ></textarea>
+            <div class="invalid-feedback">Please choose a Description.</div>
+
             <label>Image URL</label>
             <input
                 type="text"
                 name="image"
                 placeholder="Paste image URL"
             >
+            <div class="text-info mt-1"> Optional. If left blank, we'll use a default image for your listing.</div>
             <label>Price (₹)</label>
             <input
+            class="form-control"
                 type="number"
                 name="price"
                 placeholder="Enter price"
                 required
             >
+
+            <div class="invalid-feedback">Please choose a Price.</div>
+
             <label>Location</label>
             <input
+            class="form-control"
                 type="text"
                 name="location"
                 placeholder="City"
                 required
             >
+
+            <div class="invalid-feedback">Please choose a Loacation.</div>
+
             <label>Country</label>
             <input
+            class="form-control"
                 type="text"
                 name="country"
                 placeholder="Country"
                 required
             >
+
+            <div class="invalid-feedback">Please choose a Country.</div>
+
             <button type="submit">
                 Create Listing
             </button>
@@ -60,4 +83,6 @@
     </div>
 </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="/js/script.js"></script>
 </html>
