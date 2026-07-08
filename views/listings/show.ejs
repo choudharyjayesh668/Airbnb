@@ -22,10 +22,10 @@
         </div>
     </div>
     <div class="buttons">
-    <a href="/listing">← Back</a>
-    <a href="/listing/<%= listing._id %>/edit">Edit</a>
+    <a href="/listings">← Back</a>
+    <a href="/listings/<%= listing._id %>/edit">Edit</a>
 
-    <form action="/listing/<%= listing._id %>?_method=DELETE" method="POST">
+    <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
         <button type="submit">Delete</button>
     </form>
 </div>

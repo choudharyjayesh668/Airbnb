@@ -1,35 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<% layout("/layouts/boilerplate") -%>
 <body>
-    <div class="container">
-        <header>
-            <h1>Airbnb Listings</h1>
-            <p>Find your next stay</p>
-        </header>
-        <div class="listing-container">
-            <% for(let listings of allListings){ %>
-                <a href="/listing/<%= listings._id %>" class="card">
-                    <div class="card-image">
-                        <img src="<%= listings.image %>" alt="Listing">
-                    </div>
-                    <div class="card-body">
-                        <h3><%= listings.title %></h3>
-                    </div>
+    <h3>All Listing</h3>
+    <form action="/listings/new" method="get">
+        <button>Create new Listing</button>
+    </form>
+    <ul>
+        <% for(let listing of allListings) { %>
+            <li>
+                <a href="/listings/<%=listing._id%>"><%=listing.title%>
                 </a>
+            </li>
             <% } %>
-        </div>
-        <div class="btn-box">
-            <form action="/listing/new">
-                <button>Create New Listing</button>
-            </form>
-        </div>
-    </div>
+    </ul>
 </body>
-</html>
