@@ -74,7 +74,6 @@ app.delete("/listings/:id",async (req,res)=>{
     res.redirect("/listings");
 });
 
-
 //Show Route
 app.get("/listings/:id",async (req,res)=>{
     let{id}=req.params;
