@@ -1,73 +1,68 @@
 <% layout("/layouts/boilerplate") -%>
-<div class="container">
-    <div class="form-box">
-        <h1>Create a New Listing</h1>
-        <form action="/listings/new" method="POST" novalidate class="needs-validation">
-            <label>Title</label>
-            <input
-            class="form-control"
-                type="text"
-                name="title"
-                placeholder="Enter listing title"
-                required
-            >
-
-            <div class="valid-feedback">Looks good!</div>
-            <div class="invalid-feedback">Please choose a Title.</div>
-
-            <label>Description</label>
-            <textarea
-            class="form-control"
-                name="description"
-                rows="4"
-                placeholder="Describe your place"
-                required
-            ></textarea>
-            <div class="invalid-feedback">Please choose a Description.</div>
-
-            <label>Image URL</label>
-            <input
-                type="text"
-                name="image"
-                placeholder="Paste image URL"
-            >
-            <div class="text-info mt-1"> Optional. If left blank, we'll use a default image for your listing.</div>
-            <label>Price (₹)</label>
-            <input
-            class="form-control"
-                type="number"
-                name="price"
-                placeholder="Enter price"
-                required
-            >
-
-            <div class="invalid-feedback">Please choose a Price.</div>
-
-            <label>Location</label>
-            <input
-            class="form-control"
-                type="text"
-                name="location"
-                placeholder="City"
-                required
-            >
-
-            <div class="invalid-feedback">Please choose a Loacation.</div>
-
-            <label>Country</label>
-            <input
-            class="form-control"
-                type="text"
-                name="country"
-                placeholder="Country"
-                required
-            >
-
-            <div class="invalid-feedback">Please choose a Country.</div>
-
-            <button type="submit">
-                Create Listing
-            </button>
-        </form>
+<br>
+<div class="row">
+    
+    <div class="col-8 offset-2">
+        <h3>Create NEW Listing</h3>
+        <form action="/listings" method="POST">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input 
+        type="text" 
+        placeholder="Enter Title" 
+        name="listing[title]" 
+        class="form-control">
     </div>
+    <div class="mb-3">
+        <label for="Description" class="form-label">Description</label>
+        <textarea 
+        name="listing[description]" 
+        class="form-control"
+    ></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">image</label>
+        <input 
+        type="text" 
+        placeholder="Enter the Image/URL" 
+        name="listing[image]" 
+        class="form-control"
+        >
+    </div>
+    <div class="row">
+        <div class="mb-3 col-md-4">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" 
+        placeholder="1200" 
+        name="listing[price]" 
+        class="form-control"
+         >
+         </div>
+         <div class="mb-3 col-md-8">
+    <label for="country" class="form-label">Country</label>
+    <input 
+        type="text"
+        placeholder="Enter the Country" 
+        name="listing[country]"
+        class="form-control"
+            >
+    
+    </div>
+    </div>
+    <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input 
+        type="text" 
+        placeholder="Enter the Location" 
+        name="listing[location]"
+        class="form-control"
+        class="form-control"
+        >
+    </div> 
+    <br><br>
+    <button class="btn btn-dark add-btn">Add</button>
+    <br><br><br><br></br>
+</form>
+    </div>
+    
 </div>
