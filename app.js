@@ -30,6 +30,17 @@ main()
     })
     .catch(err => console.log(err));
 
+
+const validatelisting=(req,res,next)=>{
+    let {error} = listingSchema.validate(req.body);
+    if(error){
+        let errMsg=error.details.map((el)=>el.message).join(",");
+        throw new ExpressError(400,errMsg);
+    }else{
+        next();
+    }
+}
+
 //Routes
 app.get("/", (req, res) => {
     res.send("Root is working");
@@ -47,10 +58,7 @@ app.get("/listings/new",wrapAsync( async (req,res)=>{
 })
 );
  //Create Route
-app.post("/listings",wrapAsync( async (req,res,next)=>{
-    if(!req.body.listing){
-        throw new ExpressError(400,"Enter the data")
-    }
+app.post("/listings",validatelisting,wrapAsync( async (req,res,next)=>{
         const newListing=new Listing(req.body.listing);
         await newListing.save();
         res.redirect("/listings");
@@ -68,7 +76,7 @@ app.get("/listings/:id/edit",wrapAsync(async (req,res)=>{
 
 
 //update  Route
-app.put("/listings/:id",wrapAsync(async (req,res)=>{
+app.put("/listings/:id",validatelisting,wrapAsync(async (req,res)=>{
     if(!req.body.listing){
         throw new ExpressError(400,"Enter the data")
     }
@@ -100,5 +108,5 @@ app.all("/{*splat}", (req, res, next) => {
 
 app.use((err,req,res,next)=>{
     let { status = 500, message = "Something went wrong" } = err;
-  res.status(status).send(message);
+    res.status(status).render("listings/error.ejs", { message });
 })
