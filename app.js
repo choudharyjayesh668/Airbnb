@@ -17,6 +17,7 @@ app.set("view engine", "ejs");
 app.engine('ejs',ejsMate);
 const mongoose = require("mongoose");
 const { read } = require("fs");
+const { wrap } = require("module");
 async function main() {
     await mongoose.connect("mongodb://127.0.0.1:27017/airbnb");
 }
@@ -41,42 +42,63 @@ app.get("/listings",wrapAsync(async (req,res)=>{
 }));
 
 //new Route
-app.get("/listings/new", async (req,res)=>{
+app.get("/listings/new",wrapAsync( async (req,res)=>{
     res.render("listings/new.ejs");
-});
+})
+);
  //Create Route
-app.post("/listings", async (req,res,next)=>{
-    const newListing=new Listing(req.body.listing);
-    await newListing.save();
-    res.redirect("/listings")
-});
+app.post("/listings",wrapAsync( async (req,res,next)=>{
+    if(!req.body.listing){
+        throw new ExpressError(400,"Enter the data")
+    }
+        const newListing=new Listing(req.body.listing);
+        await newListing.save();
+        res.redirect("/listings");
+    })
+);
 
 
 //Edit Route
-app.get("/listings/:id/edit",async (req,res)=>{
+app.get("/listings/:id/edit",wrapAsync(async (req,res)=>{
     let{id}=req.params;
     const listing=await Listing.findById(id);
     res.render("listings/edit.ejs",{listing});
-});
+})
+);
 
 
 //update  Route
-app.put("/listings/:id",async (req,res)=>{
+app.put("/listings/:id",wrapAsync(async (req,res)=>{
+    if(!req.body.listing){
+        throw new ExpressError(400,"Enter the data")
+    }
     let{id}=req.params;
     await Listing.findByIdAndUpdate(id ,req.body.listing);
     res.redirect(`/listings/${id}`)
-});
+})
+);
 
 //Delete route
-app.delete("/listings/:id",async (req,res)=>{
+app.delete("/listings/:id",wrapAsync(async (req,res)=>{
     let {id}=req.params;
     await Listing.findByIdAndDelete(id);
     res.redirect("/listings");
-});
+})
+);
 
 //Show Route
-app.get("/listings/:id",async (req,res)=>{
+app.get("/listings/:id",wrapAsync(async (req,res)=>{
     let{id}=req.params;
     const listing = await Listing.findById(id);
     res.render("listings/show.ejs",{listing});
+})
+);
+
+app.all("/{*splat}", (req, res, next) => {
+  next(new ExpressError(404, "Page is invalid"));
 });
+
+app.use((err,req,res,next)=>{
+    let { status = 500, message = "Something went wrong" } = err;
+  res.status(status).send(message);
+})
